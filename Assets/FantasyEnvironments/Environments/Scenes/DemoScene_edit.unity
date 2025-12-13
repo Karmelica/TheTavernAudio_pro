@@ -574,7 +574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1115243158249834, guid: cb181bc6c302bca40929333077286a04, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1115243158249834, guid: cb181bc6c302bca40929333077286a04, type: 3}
       propertyPath: m_TagString
@@ -2557,13 +2557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a1e7f444dae7444bbd7d1e18a737af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorsEvent:
-    Guid:
-      Data1: -500695029
-      Data2: 1246085579
-      Data3: 562479799
-      Data4: -377848113
-    Path: event:/Bed
 --- !u!1001 &511914473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3291,7 +3284,7 @@ GameObject:
   - component: {fileID: 688602385}
   m_Layer: 0
   m_Name: Terrain 1
-  m_TagString: ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4642,13 +4635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a1e7f444dae7444bbd7d1e18a737af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorsEvent:
-    Guid:
-      Data1: -500695029
-      Data2: 1246085579
-      Data3: 562479799
-      Data4: -377848113
-    Path: event:/Bed
 --- !u!64 &1072624435
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7411,13 +7397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a1e7f444dae7444bbd7d1e18a737af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorsEvent:
-    Guid:
-      Data1: -500695029
-      Data2: 1246085579
-      Data3: 562479799
-      Data4: -377848113
-    Path: event:/Bed
 --- !u!64 &1836824988
 MeshCollider:
   m_ObjectHideFlags: 0
