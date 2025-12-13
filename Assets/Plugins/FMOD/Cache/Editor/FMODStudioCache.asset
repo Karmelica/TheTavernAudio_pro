@@ -180,7 +180,7 @@ MonoBehaviour:
   Name: Footsteps_surface
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 3
   Default: 0
   ID:
     data1: 339004533
@@ -191,6 +191,7 @@ MonoBehaviour:
   - Stone
   - Wood
   - Ground
+  - Bed
   Exists: 1
 --- !u!114 &-3835351059419555204
 MonoBehaviour:
@@ -300,15 +301,13 @@ MonoBehaviour:
   - {fileID: -8738744131178787348}
   - {fileID: -3830263011273236712}
   - {fileID: 7135225841413685832}
-  - {fileID: 3804275430482925606}
   - {fileID: 4591185621376259675}
-  - {fileID: 9001336743611320411}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6900061559170321601}
   StringsBanks:
   - {fileID: 3545289254276253663}
-  cacheTime: 639012224003074018
+  cacheTime: 639012552477988923
   cacheVersion: 131617
 --- !u!114 &567341133767377534
 MonoBehaviour:
@@ -352,7 +351,7 @@ MonoBehaviour:
   Name: Footsteps_surface
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 3
   Default: 0
   ID:
     data1: 339004533
@@ -363,6 +362,7 @@ MonoBehaviour:
   - Stone
   - Wood
   - Ground
+  - Bed
   Exists: 1
 --- !u!114 &2339984271117014530
 MonoBehaviour:
@@ -407,7 +407,7 @@ MonoBehaviour:
   Name: Footsteps_surface
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 3
   Default: 0
   ID:
     data1: 339004533
@@ -418,6 +418,7 @@ MonoBehaviour:
   - Stone
   - Wood
   - Ground
+  - Bed
   Exists: 1
 --- !u!114 &3545289254276253663
 MonoBehaviour:
@@ -434,39 +435,11 @@ MonoBehaviour:
   Path: FMOD Studio/Tavern/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639012224003074018
+  lastModified: 639012552477988923
   FileSizes:
   - Name: Desktop
-    Value: 2084
+    Value: 1952
   Exists: 1
---- !u!114 &3804275430482925606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Spell
-  m_EditorClassIdentifier: 
-  Path: event:/Spell
-  Guid:
-    Data1: 1965044991
-    Data2: 1329734166
-    Data3: -288031562
-    Data4: 587731880
-  Banks:
-  - {fileID: 6900061559170321601}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters:
-  - {fileID: 7444604227911041314}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &4173816062126049097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,10 +538,10 @@ MonoBehaviour:
   Path: FMOD Studio/Tavern/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639012224003044025
+  lastModified: 639012552477968913
   FileSizes:
   - Name: Desktop
-    Value: 7505856
+    Value: 7513888
   Exists: 1
 --- !u!114 &6954510192736954330
 MonoBehaviour:
@@ -623,33 +596,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
---- !u!114 &7444604227911041314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Spell/Spell
-  m_EditorClassIdentifier: 
-  Name: Spell
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 352127068
-    data2: 3574177585
-  Type: 2
-  IsGlobal: 0
-  Labels:
-  - Looping
-  - Release
-  - Cancel
-  Exists: 1
 --- !u!114 &7840059489574424299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,30 +624,3 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 77538
---- !u!114 &9001336743611320411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Spell_impact
-  m_EditorClassIdentifier: 
-  Path: event:/Spell_impact
-  Guid:
-    Data1: -1792590976
-    Data2: 1225755050
-    Data3: 1484001666
-    Data4: 2069686241
-  Banks:
-  - {fileID: 6900061559170321601}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0

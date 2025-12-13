@@ -238,6 +238,7 @@ public class AudioSystem : MonoBehaviour
                         "Stone" => "Stone",
                         "Wood" => "Wood",
                         "Inside_stone" => "Stone",
+                        "ground" => "Ground",
                         "Bed" => "Bed",
                         _ => "Stone"
                     };
@@ -270,6 +271,7 @@ public class AudioSystem : MonoBehaviour
                         "Stone" => "Stone",
                         "Wood" => "Wood",
                         "Inside_stone" => "Stone",
+                        "ground" => "Ground",
                         "Bed" => "Bed",
                         _ => "Stone"
                     };
