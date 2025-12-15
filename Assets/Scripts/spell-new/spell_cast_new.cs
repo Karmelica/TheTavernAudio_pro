@@ -114,11 +114,11 @@ public class spell_cast_new : MonoBehaviour
     }
 
     void HandleChargingState()
-    {
-        if (Input.GetMouseButton(0))
+    {
+        FollowSpawnPoint();
+        if (Input.GetMouseButton(0))
         {
             chargeTimer += Time.deltaTime;
-            FollowSpawnPoint();
             float t = Mathf.Clamp01(chargeTimer / chargeTime);
             scaleValue = chargeCurve.Evaluate(t);
             UpdateChargingVfx(t);

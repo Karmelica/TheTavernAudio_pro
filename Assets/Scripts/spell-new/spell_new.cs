@@ -21,8 +21,8 @@ public class spell_new : MonoBehaviour
 
     private AudioSystem audioSystem;
 
-    private ParticleSystem chargePs;
-    private ParticleSystem chargedPs;
+    //private ParticleSystem chargePs;
+    //private ParticleSystem chargedPs;
 
     void Start()
     {
@@ -41,8 +41,8 @@ public class spell_new : MonoBehaviour
             Debug.LogError("POMOCNIK: Warstwa 'Environment' nie została znaleziona. Upewnij się, że jest zdefiniowana w Unity.");
         }
 
-        chargePs = chargeChild?.GetComponent<ParticleSystem>();
-        chargedPs = chargedChild?.GetComponent<ParticleSystem>();
+        //chargePs = chargeChild?.GetComponent<ParticleSystem>();
+        //chargedPs = chargedChild?.GetComponent<ParticleSystem>();
 
         groundChild?.SetActive(false);
     }
