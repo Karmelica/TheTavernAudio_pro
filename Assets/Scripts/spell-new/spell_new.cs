@@ -126,7 +126,7 @@ public class spell_new : MonoBehaviour
                 chargedChild?.SetActive(false);
                 break;
             case SpellState.Holding:
-                chargeChild?.SetActive(false);
+                chargeChild?.SetActive(true);
                 chargedChild?.SetActive(true);
                 break;
             case SpellState.Idle:
