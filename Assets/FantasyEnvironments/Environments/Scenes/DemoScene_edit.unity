@@ -898,7 +898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 0}
+  attenuationObject: {fileID: 237163387}
 --- !u!114 &237163392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,8 +929,6 @@ MonoBehaviour:
   spellPrefab: {fileID: 4380918445339287248, guid: bc636f3c0697c124c99a64c6f3eb537b, type: 3}
   spellSpawnPoint: {fileID: 477513549}
   spellShootForce: 50
-  chargeStartColor: {r: 0, g: 0, b: 0, a: 1}
-  chargeEndColor: {r: 0.8784314, g: 0.14509802, b: 0.7944661, a: 1}
   chargedChildName: ChargedFX
   chargeCurve:
     serializedVersion: 2
@@ -2486,7 +2484,6 @@ GameObject:
   - component: {fileID: 510186389}
   - component: {fileID: 510186388}
   - component: {fileID: 510186387}
-  - component: {fileID: 510186391}
   m_Layer: 0
   m_Name: BedTrigger
   m_TagString: Untagged
@@ -2584,18 +2581,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2002987396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &510186391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510186386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a1e7f444dae7444bbd7d1e18a737af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &511914473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3098,7 +3083,7 @@ Transform:
   m_GameObject: {fileID: 613997984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 400.7, y: 8.22, z: 308.23}
+  m_LocalPosition: {x: 391.28, y: 8.22, z: 297.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3189,7 +3174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ca2db71bb5fa4a99c2ee53ba4f905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TavernMusic_2: {fileID: 0}
+  TavernMusic_2: {fileID: 421063490}
   TavernMusic: {fileID: 421063490}
   TavernAmb: {fileID: 1584074890}
   TavernFireplace: {fileID: 262522724}
@@ -3231,11 +3216,11 @@ MonoBehaviour:
     Path: event:/Footsteps/Land
   spellEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 330822780
+      Data2: 1162932082
+      Data3: 1582836373
+      Data4: -1769428995
+    Path: event:/Spell Charging
   spellImpactEvent:
     Guid:
       Data1: 0
@@ -4681,7 +4666,6 @@ GameObject:
   - component: {fileID: 1072624437}
   - component: {fileID: 1072624436}
   - component: {fileID: 1072624435}
-  - component: {fileID: 1072624434}
   m_Layer: 0
   m_Name: BedTrigger (1)
   m_TagString: Untagged
@@ -4689,18 +4673,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1072624434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072624433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a1e7f444dae7444bbd7d1e18a737af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1072624435
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7500,7 +7472,6 @@ GameObject:
   - component: {fileID: 1836824990}
   - component: {fileID: 1836824989}
   - component: {fileID: 1836824988}
-  - component: {fileID: 1836824987}
   m_Layer: 0
   m_Name: BedTrigger (2)
   m_TagString: Untagged
@@ -7508,18 +7479,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1836824987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836824986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a1e7f444dae7444bbd7d1e18a737af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1836824988
 MeshCollider:
   m_ObjectHideFlags: 0

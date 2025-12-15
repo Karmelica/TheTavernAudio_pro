@@ -41,14 +41,10 @@ public class spell_new : MonoBehaviour
             Debug.LogError("POMOCNIK: Warstwa 'Environment' nie została znaleziona. Upewnij się, że jest zdefiniowana w Unity.");
         }
 
+        chargePs = chargeChild?.GetComponent<ParticleSystem>();
+        chargedPs = chargedChild?.GetComponent<ParticleSystem>();
 
-        if (chargeChild != null)
-            chargePs = chargeChild.GetComponent<ParticleSystem>();
-        if (chargedChild != null)
-            chargedPs = chargedChild.GetComponent<ParticleSystem>();
-
-        if (groundChild != null)
-            groundChild.SetActive(false);
+        groundChild?.SetActive(false);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -119,5 +115,26 @@ public class spell_new : MonoBehaviour
             yield return null;
         }
         Destroy(gameObject, destroyDelay);
+    }
+
+    public void ChangeSpellVisual(SpellState spellState)
+    {
+        switch (spellState)
+        {
+            case SpellState.Charging:
+                chargeChild?.SetActive(true);
+                chargedChild?.SetActive(false);
+                break;
+            case SpellState.Holding:
+                chargeChild?.SetActive(false);
+                chargedChild?.SetActive(true);
+                break;
+            case SpellState.Idle:
+                chargeChild?.SetActive(false);
+                chargedChild?.SetActive(false);
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -11,8 +11,8 @@ public class spell_cast_new : MonoBehaviour
     public GameObject spellPrefab;
     public Transform spellSpawnPoint;
     public float spellShootForce = 20f;
-    public Color chargeStartColor = Color.black;
-    public Color chargeEndColor = new Color(1f, 0.6235f, 0f);
+    //public Color chargeStartColor = Color.black;
+   // public Color chargeEndColor = new Color(1f, 0.6235f, 0f);
     public string chargedChildName = "ChargedFX";
     public AnimationCurve chargeCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
@@ -34,12 +34,6 @@ public class spell_cast_new : MonoBehaviour
     private const string STOPPED_STATE = "STOPPED"; 
     private bool isAudioInitialized = false; // FLAGA BEZPIECZEŃSTWA
 
-    enum SpellState
-    {
-        Idle,
-        Charging,
-        Holding
-    }
 
     // Wykonuje się przed Start() - idealne do pobierania referencji do singletonów
     void Awake() 
@@ -75,9 +69,11 @@ public class spell_cast_new : MonoBehaviour
                 break;
             case SpellState.Charging:
                 HandleChargingState();
+                currentSpellInstance?.GetComponent<spell_new>().ChangeSpellVisual(SpellState.Charging);
                 break;
             case SpellState.Holding:
                 HandleHoldingState();
+                currentSpellInstance?.GetComponent<spell_new>().ChangeSpellVisual(SpellState.Holding);
                 break;
         }
         
@@ -225,7 +221,7 @@ public class spell_cast_new : MonoBehaviour
             currentVfxTransform = currentParticleSystem.transform;
             currentVfxTransform.localScale = Vector3.zero;
             var main = currentParticleSystem.main;
-            main.startColor = chargeStartColor;
+            //main.startColor = chargeStartColor;
         }
 
         chargedChildInstance = null;
@@ -256,7 +252,7 @@ public class spell_cast_new : MonoBehaviour
         if (currentParticleSystem != null)
         {
             var main = currentParticleSystem.main;
-            main.startColor = Color.Lerp(chargeStartColor, chargeEndColor, t);
+            //main.startColor = Color.Lerp(chargeStartColor, chargeEndColor, t);
         }
     }
 
@@ -268,7 +264,7 @@ public class spell_cast_new : MonoBehaviour
         if (currentParticleSystem != null)
         {
             var main = currentParticleSystem.main;
-            main.startColor = chargeEndColor;
+            //main.startColor = chargeEndColor;
         }
 
         if (chargedChildInstance != null)
@@ -310,4 +306,11 @@ public class spell_cast_new : MonoBehaviour
         currentVfxTransform = null;
         chargedChildInstance = null;
     }
+}
+
+public enum SpellState
+{
+    Idle,
+    Charging,
+    Holding
 }
