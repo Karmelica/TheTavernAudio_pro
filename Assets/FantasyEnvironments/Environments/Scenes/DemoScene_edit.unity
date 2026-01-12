@@ -3696,14 +3696,14 @@ MonoBehaviour:
       Data2: 1162932082
       Data3: 1582836373
       Data4: -1769428995
-    Path: event:/Spell Charging
+    Path: event:/Spell/Spell Charging
   spellImpactEvent:
     Guid:
       Data1: 1150812812
       Data2: 1268695308
       Data3: -109448560
       Data4: -424992401
-    Path: event:/Spell Impact
+    Path: event:/Spell/Spell Impact
   insideRoomSnap:
     Guid:
       Data1: 815318414
