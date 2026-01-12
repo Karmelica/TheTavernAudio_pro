@@ -304,6 +304,11 @@ public class AudioSystem : MonoBehaviour
     public void SpellCancel()
     {
         SpellSound.setParameterByNameWithLabel("Spell", "Cancel");
+        SpellSound.release();
+    }
+
+    public void SpellLetGo()
+    {
         SpellSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         SpellSound.release();
     }
