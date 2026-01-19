@@ -1400,7 +1400,7 @@ MonoBehaviour:
   chargeTime: 2
   spellPrefab: {fileID: 4380918445339287248, guid: bc636f3c0697c124c99a64c6f3eb537b, type: 3}
   spellSpawnPoint: {fileID: 477513549}
-  spellShootForce: 100
+  spellShootForce: 50
   chargedChildName: ChargedFX
   chargeCurve:
     serializedVersion: 2
