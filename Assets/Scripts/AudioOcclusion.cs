@@ -1,6 +1,7 @@
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using FMOD;
 using System.ComponentModel;
 
 public class AudioOcclusion : MonoBehaviour
@@ -18,11 +19,11 @@ public class AudioOcclusion : MonoBehaviour
 
     [Header("Occlusion Options")]
     [SerializeField]
-    [Range(0f, 10f)]
-    private float SoundOcclusionWidening = 1f;
+    [Range(0f,10f)]
+    private float SoundOcclusionWidening =1f;
     [SerializeField]
-    [Range(0f, 10f)]
-    private float PlayerOcclusionWidening = 1f;
+    [Range(0f,10f)]
+    private float PlayerOcclusionWidening =1f;
     [SerializeField]
     private LayerMask OcclusionLayer;
 
@@ -30,44 +31,68 @@ public class AudioOcclusion : MonoBehaviour
     private float minDistance;
     private float maxDistance;
     private float listenerDistance;
-    private float lineCastHitCount = 0f;
+    private float lineCastHitCount =0f;
     private Color colour;
 
     private void Start()
     {
-        //Audio = RuntimeManager.CreateInstance(SelectAudio);
-        //RuntimeManager.AttachInstanceToGameObject(Audio, GetComponent<Transform>(), GetComponent<Rigidbody>());
-        //Audio.start();
-        //Audio.release();
+        if (eventEmitter == null)
+        {
+            enabled = false;
+            return;
+        }
 
-        //Audio.getDescription(out AudioDes);
-        //Audio.getMinMaxDistance(out MinDistance, out MaxDistance);
-
+        // Try to obtain the FMOD event instance and description.
+       
         eventInstance = eventEmitter.EventInstance;
-        eventInstance.getDescription(out eventDes);
-        eventDes.getMinMaxDistance(out minDistance, out maxDistance);
 
-        Debug.Log(eventDes + " " + minDistance + " " + maxDistance);
-
-        //eventDes = RuntimeManager.GetEventDescription(SelectAudio);
-        //eventDes.getMinMaxDistance(out minDistance, out maxDistance);
+        var res = eventInstance.getDescription(out eventDes);
+        if (res == RESULT.OK)
+        {
+            var res2 = eventDes.getMinMaxDistance(out minDistance, out maxDistance);
+            if (res2 == RESULT.OK)
+            {
+                // minDistance and maxDistance set
+            }
+        }
 
         listener = FindObjectOfType<StudioListener>();
+        // listener may be null; handle in FixedUpdate
     }
 
     private void FixedUpdate()
     {
-        eventInstance.isVirtual(out audioIsVirtual); // isVirtual oznacza, �e d�wi�k nadal gra, ale gracz go nie s�yszy
-                                                     // w tej linii sprawdzamy czy d�wi�k jest "wirtualny"
-                                                     // ENG - isVirtual means that the sound is still playing, but the player can't hear it
-                                                     // in this line we check if the sound is "virtual"
-        eventInstance.getPlaybackState(out pb);      // status odtwarzania: starting, playing, stopping, stopped, sustained
-        listenerDistance = Vector3.Distance(transform.position, listener.transform.position);
+        if (!enabled)
+            return;
+
+        if (eventEmitter == null)
+        {
+            return;
+        }
+
+        if (listener == null)
+        {
+            listener = FindObjectOfType<StudioListener>();
+            if (listener == null)
+            {
+                return;
+            }
+        }
+
+        // Use the emitter's transform position if emitter is on a different object than this component
+        Vector3 sourcePos = (eventEmitter != null && eventEmitter.gameObject != null) ? eventEmitter.transform.position : transform.position;
+        Vector3 listenerPos = listener.transform.position;
+
+        eventInstance.isVirtual(out audioIsVirtual);
+        
+        eventInstance.getPlaybackState(out pb);
+
+        listenerDistance = Vector3.Distance(sourcePos, listenerPos);
 
         if (!audioIsVirtual && pb == PLAYBACK_STATE.PLAYING && listenerDistance <= maxDistance)
-            OccludeBetween(transform.position, listener.transform.position);
+            OccludeBetween(sourcePos, listenerPos);
 
-        lineCastHitCount = 0f;
+        lineCastHitCount =0f;
     }
 
     private void OccludeBetween(Vector3 sound, Vector3 listener)
@@ -81,8 +106,8 @@ public class AudioOcclusion : MonoBehaviour
         Vector3 ListenerLeft = CalculatePoint(listener, sound, PlayerOcclusionWidening, true);
         Vector3 ListenerRight = CalculatePoint(listener, sound, PlayerOcclusionWidening, false);
 
-        Vector3 ListenerAbove = new Vector3(listener.x, listener.y + PlayerOcclusionWidening * 0.5f, listener.z);
-        Vector3 ListenerBelow = new Vector3(listener.x, listener.y - PlayerOcclusionWidening * 0.5f, listener.z);
+        Vector3 ListenerAbove = new Vector3(listener.x, listener.y + PlayerOcclusionWidening *0.5f, listener.z);
+        Vector3 ListenerBelow = new Vector3(listener.x, listener.y - PlayerOcclusionWidening *0.5f, listener.z);
 
         CastLine(SoundLeft, ListenerLeft);
         CastLine(SoundLeft, listener);
@@ -99,7 +124,7 @@ public class AudioOcclusion : MonoBehaviour
         CastLine(SoundAbove, ListenerAbove);
         CastLine(SoundBelow, ListenerBelow);
 
-        if (PlayerOcclusionWidening == 0f || SoundOcclusionWidening == 0f)
+        if (PlayerOcclusionWidening ==0f || SoundOcclusionWidening ==0f)
         {
             colour = Color.blue;
         }
@@ -115,7 +140,11 @@ public class AudioOcclusion : MonoBehaviour
     {
         float x;
         float z;
-        float n = Vector3.Distance(new Vector3(a.x, 0f, a.z), new Vector3(b.x, 0f, b.z));
+        float n = Vector3.Distance(new Vector3(a.x,0f, a.z), new Vector3(b.x,0f, b.z));
+        if (n ==0f)
+        {
+            return a;
+        }
         float mn = (m / n);
         if (posOrneg)
         {
@@ -133,20 +162,26 @@ public class AudioOcclusion : MonoBehaviour
     private void CastLine(Vector3 Start, Vector3 End)
     {
         RaycastHit hit;
-        Physics.Linecast(Start, End, out hit, OcclusionLayer);
+        int mask = OcclusionLayer.value;
+        float segmentLength = Vector3.Distance(Start, End);
 
-        if (hit.collider)
+        bool didHit = Physics.Linecast(Start, End, out hit, mask);
+
+        if (didHit && hit.collider)
         {
             lineCastHitCount++;
-            Debug.DrawLine(Start, End, Color.red);
+            UnityEngine.Debug.DrawLine(Start, End, Color.red);
         }
         else
-            Debug.DrawLine(Start, End, colour);
+        {
+            UnityEngine.Debug.DrawLine(Start, End, colour);
+        }
     }
 
     private void SetParameter()
     {
-        eventInstance.setParameterByName("Occlusion", lineCastHitCount / 11);
-        //Debug.Log("SET");
+        float occlusionValue = lineCastHitCount /11f;
+        
+        eventInstance.setParameterByName("Occlusion", occlusionValue);
     }
 }

@@ -42,7 +42,7 @@
 	</object>
 	<object class="MasterTrack" id="{c4451798-cbf7-48f7-8b9f-abd83133989a}">
 		<relationship name="automationTracks">
-			<destination>{d720ee62-37b8-445f-b991-e71b142e8072}</destination>
+			<destination>{f16bad1a-a74c-425c-a672-8bb2e57574b8}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{d4d560f4-5053-4820-960c-dd60a54cef6c}</destination>
@@ -91,7 +91,7 @@
 			<destination>{693f860b-31a1-44ae-b86b-aa33602070f1}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationTrack" id="{d720ee62-37b8-445f-b991-e71b142e8072}">
+	<object class="AutomationTrack" id="{f16bad1a-a74c-425c-a672-8bb2e57574b8}">
 		<relationship name="automator">
 			<destination>{7221f004-1a1d-4f48-aab2-f4dfdcc6a9a4}</destination>
 		</relationship>
@@ -203,6 +203,34 @@
 	<object class="Automator" id="{7221f004-1a1d-4f48-aab2-f4dfdcc6a9a4}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>cutoff</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{5baa64ef-0faa-4ffd-89c2-5e92a14ce6e1}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{5baa64ef-0faa-4ffd-89c2-5e92a14ce6e1}">
+		<relationship name="parameter">
+			<destination>{d8e1aa7e-74cc-4bff-8db5-9cc032f49259}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{97d024be-ca42-4d94-bf30-2eb69b1c467d}</destination>
+			<destination>{1d494401-e6d0-4dfc-9517-453387abd873}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{97d024be-ca42-4d94-bf30-2eb69b1c467d}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>22000</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{1d494401-e6d0-4dfc-9517-453387abd873}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>500</value>
 		</property>
 	</object>
 </objects>
