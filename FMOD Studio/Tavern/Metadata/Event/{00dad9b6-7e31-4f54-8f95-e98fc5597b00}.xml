@@ -215,6 +215,7 @@
 		<relationship name="automationPoints">
 			<destination>{97d024be-ca42-4d94-bf30-2eb69b1c467d}</destination>
 			<destination>{1d494401-e6d0-4dfc-9517-453387abd873}</destination>
+			<destination>{3e73578a-2b16-4c98-bf0d-1cc3c7ff9184}</destination>
 		</relationship>
 	</object>
 	<object class="AutomationPoint" id="{97d024be-ca42-4d94-bf30-2eb69b1c467d}">
@@ -230,7 +231,15 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>500</value>
+			<value>1000</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{3e73578a-2b16-4c98-bf0d-1cc3c7ff9184}">
+		<property name="position">
+			<value>0.25</value>
+		</property>
+		<property name="value">
+			<value>3000</value>
 		</property>
 	</object>
 </objects>

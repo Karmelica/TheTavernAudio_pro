@@ -2390,13 +2390,15 @@ MonoBehaviour:
       Data4: 675919702
     Path: event:/Music_2
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 0
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
-  Params: []
+  Params:
+  - Name: Occlusion
+    Value: 1
   OverrideAttenuation: 1
   OverrideMinDistance: 4
   OverrideMaxDistance: 20
@@ -2835,7 +2837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &497316226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3810,7 +3812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventEmitter: {fileID: 1584074890}
   SoundOcclusionWidening: 1
-  PlayerOcclusionWidening: 1
+  PlayerOcclusionWidening: 0.6
   OcclusionLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -3828,7 +3830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventEmitter: {fileID: 421063490}
   SoundOcclusionWidening: 1
-  PlayerOcclusionWidening: 1
+  PlayerOcclusionWidening: 0.6
   OcclusionLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -6705,7 +6707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1584074889
 Transform:
   m_ObjectHideFlags: 0
@@ -6742,13 +6744,15 @@ MonoBehaviour:
       Data4: 8083909
     Path: event:/Tavern ambient
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 0
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
-  Params: []
+  Params:
+  - Name: Occlusion
+    Value: 1
   OverrideAttenuation: 1
   OverrideMinDistance: 4
   OverrideMaxDistance: 20

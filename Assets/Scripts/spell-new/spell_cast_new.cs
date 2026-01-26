@@ -6,6 +6,7 @@ using System.Collections;
 
 public class spell_cast_new : MonoBehaviour
 {
+    private CharacterController characterController;
     // --- KONFIGURACJA ZAKLĘCIA (WIZUALNA I FIZYCZNA) ---
     public float chargeTime = 0.5f;
     public GameObject spellPrefab;
@@ -38,6 +39,7 @@ public class spell_cast_new : MonoBehaviour
     // Wykonuje się przed Start() - idealne do pobierania referencji do singletonów
     void Awake() 
     {
+        characterController = GetComponentInParent<CharacterController>();
         // 1. POBIERANIE AUDIO SYSTEM
         audioSystem = FindObjectOfType<AudioSystem>();
 
@@ -257,7 +259,7 @@ public class spell_cast_new : MonoBehaviour
             currentSpellRb.isKinematic = false;
 
             Vector3 shootDir = spellSpawnPoint != null ? spellSpawnPoint.forward : transform.forward;
-            currentSpellRb.linearVelocity = shootDir * spellShootForce;
+            currentSpellRb.linearVelocity = (shootDir + (characterController.velocity.normalized * 0.25f)) * spellShootForce;
         }
         
         // Zniszczenie obiektu po czasie życia pocisku (zdefiniowane w innym skrypcie/prefabie)

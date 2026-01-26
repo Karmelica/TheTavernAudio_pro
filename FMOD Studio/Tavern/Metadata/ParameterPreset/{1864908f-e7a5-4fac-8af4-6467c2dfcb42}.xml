@@ -23,11 +23,14 @@
 		<property name="nameOfPropertyBeingModulated">
 			<value>cursorPosition</value>
 		</property>
-		<property name="clockSource">
-			<value>1</value>
-		</property>
 		<property name="speedAscending">
 			<value>1.1000000238418579</value>
+		</property>
+		<property name="speedDescending">
+			<value>0.69999998807907104</value>
+		</property>
+		<property name="asymmetric">
+			<value>true</value>
 		</property>
 	</object>
 </objects>
