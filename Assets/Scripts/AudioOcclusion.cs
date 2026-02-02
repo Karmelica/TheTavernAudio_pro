@@ -3,6 +3,7 @@ using FMODUnity;
 using FMOD.Studio;
 using FMOD;
 using System.ComponentModel;
+using UnityEditor;
 
 public class AudioOcclusion : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class AudioOcclusion : MonoBehaviour
 
     [Header("Occlusion Options")]
     [SerializeField]
+    private float minOclusionDistance = 6f;
+    [SerializeField]
     [Range(0f,10f)]
     private float SoundOcclusionWidening =1f;
     [SerializeField]
@@ -27,6 +30,7 @@ public class AudioOcclusion : MonoBehaviour
     [SerializeField]
     private LayerMask OcclusionLayer;
 
+    float occlusionFloat;
     private bool audioIsVirtual;
     private float minDistance;
     private float maxDistance;
@@ -89,10 +93,16 @@ public class AudioOcclusion : MonoBehaviour
 
         listenerDistance = Vector3.Distance(sourcePos, listenerPos);
 
-        if (!audioIsVirtual && pb == PLAYBACK_STATE.PLAYING && listenerDistance <= maxDistance)
+        if (!audioIsVirtual && pb == PLAYBACK_STATE.PLAYING && listenerDistance <= minOclusionDistance)
+        {
+            lineCastHitCount = 0;
+            SetParameter();
+        }
+
+        else if (!audioIsVirtual && pb == PLAYBACK_STATE.PLAYING && listenerDistance <= maxDistance)
             OccludeBetween(sourcePos, listenerPos);
 
-        lineCastHitCount =0f;
+            lineCastHitCount = 0f;
     }
 
     private void OccludeBetween(Vector3 sound, Vector3 listener)
@@ -181,7 +191,8 @@ public class AudioOcclusion : MonoBehaviour
     private void SetParameter()
     {
         float occlusionValue = lineCastHitCount /11f;
+        occlusionFloat = Mathf.Lerp(occlusionFloat, occlusionValue, Time.deltaTime);
         
-        eventInstance.setParameterByName("Occlusion", occlusionValue);
+        eventInstance.setParameterByName("Occlusion", occlusionFloat);
     }
 }
